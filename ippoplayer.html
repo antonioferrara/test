@@ -4,7 +4,8 @@
 		<div id="player" style="position: absolute; top: 0px; left: 0px"></div>
 
 		<script>
-			document.documentElement.requestFullscreen;
+			var docEl = document.documentElement;
+			docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen || docEl.msRequestFullscreen;
 			
 			// 2. This code loads the IFrame Player API code asynchronously.
 			var tag = document.createElement('script');
@@ -18,8 +19,8 @@
 			var player;
 			function onYouTubeIframeAPIReady() {
 				player = new YT.Player('player', {
-					height: document.documentElement.clientHeight,
-					width: document.documentElement.clientWidth,
+					height: docEl.clientHeight,
+					width: docEl.clientWidth,
 					videoId: 'VDU4sbYaaMI',
 					events: {
 						'onReady': onPlayerReady,
