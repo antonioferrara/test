@@ -59,14 +59,20 @@
 				});
 				event.target.playVideo();
 				
-				setInterval(function() {
+				setTimeout(function() {
 					document.getElementById('volume').innerHTML = 'Volume: ' + player.getVolume();
 				}, 1000);
 				document.getElementById('diminuisci').onclick = function () {
 					player.setVolume(player.getVolume() - 10);
+					setTimeout(function() {
+						document.getElementById('volume').innerHTML = 'Volume: ' + player.getVolume();
+					}, 500);
 				};
 				document.getElementById('aumenta').onclick = function () {
 					player.setVolume(player.getVolume() + 10);
+					setTimeout(function() {
+						document.getElementById('volume').innerHTML = 'Volume: ' + player.getVolume();
+					}, 500);
 				};
 			}
 
