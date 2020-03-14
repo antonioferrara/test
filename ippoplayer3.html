@@ -30,16 +30,6 @@
 						'onStateChange': onPlayerStateChange
 					}
 				});
-				
-				document.getElementById('volume').innerHTML = 'Volume: ' + player.getVolume();
-				document.getElementById('diminuisci').onclick = function () {
-					player.setVolume(player.getVolume() - 10);
-					document.getElementById('volume').innerHTML = 'Volume: ' + player.getVolume();
-				}
-				document.getElementById('aumenta').onclick = function () {
-					player.setVolume(player.getVolume() + 10);
-					document.getElementById('volume').innerHTML = 'Volume: ' + player.getVolume();
-				}
 			}
 			
 			document.getElementById('diminuisci').style.top = document.documentElement.clientHeight - 100;
@@ -68,6 +58,16 @@
 				    	'suggestedQuality': 'large'
 				});
 				event.target.playVideo();
+				
+				document.getElementById('volume').innerHTML = 'Volume: ' + player.getVolume();
+				document.getElementById('diminuisci').onclick = function () {
+					player.setVolume(player.getVolume() - 10);
+					document.getElementById('volume').innerHTML = 'Volume: ' + player.getVolume();
+				}
+				document.getElementById('aumenta').onclick = function () {
+					player.setVolume(player.getVolume() + 10);
+					document.getElementById('volume').innerHTML = 'Volume: ' + player.getVolume();
+				}
 			}
 
 			// 5. The API calls this function when the player's state changes.
