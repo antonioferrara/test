@@ -6,9 +6,9 @@
 	<body style="margin: 0px; overflow: hidden; background-color: #000000; color: #ffffff; font-family: sans-serif; font-size: 30">
 		<!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
 		<div id="player" style="position: absolute; top: 0px; left: 0px"></div>
-		<div id="diminuisci" style="position: absolute; text-align: center; vertical-align: middle">Diminuisci</div>
-		<div id="volume" style="position: absolute; text-align: center; vertical-align: middle"></div>
-		<div id="aumenta" style="position: absolute; text-align: center; vertical-align: middle">Aumenta</div>
+		<div id="diminuisci" style="position: absolute; text-align: center; padding-top: 35">Diminuisci</div>
+		<div id="volume" style="position: absolute; text-align: center; padding-top: 35"></div>
+		<div id="aumenta" style="position: absolute; text-align: center; padding-top: 35">Aumenta</div>
 
 		<script>
 			// 2. This code loads the IFrame Player API code asynchronously.
@@ -44,10 +44,6 @@
 			document.getElementById('volume').style.height = 100;
 			document.getElementById('aumenta').style.height = 100;
 			
-			//document.getElementById('diminuisci').style.lineHeight = 100;
-			//document.getElementById('volume').style.lineHeight = 100;
-			//document.getElementById('aumenta').style.lineHeight = 100;
-			
 			document.getElementById('diminuisci').style.width = 0.33 * document.documentElement.clientWidth;
 			document.getElementById('volume').style.width = 0.33 * document.documentElement.clientWidth;
 			document.getElementById('aumenta').style.width = 0.33 * document.documentElement.clientWidth;
@@ -63,7 +59,7 @@
 				});
 				event.target.playVideo();
 				
-				document.getElementById('volume').innerHTML = 'Volume: ' + player.getVolume();
+				document.getElementById('volume').innerHTML = 'Volume';
 				document.getElementById('diminuisci').onclick = function () {
 					player.setVolume(player.getVolume() - 10);
 					document.getElementById('volume').innerHTML = 'Volume: ' + player.getVolume();
