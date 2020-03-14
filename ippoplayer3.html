@@ -60,7 +60,7 @@
 				event.target.playVideo();
 				
 				setInterval(function() {
-					document.getElementById('volume').innerHTML = 'Volume<br>' + player.getVolume();
+					document.getElementById('volume').innerHTML = 'Volume: ' + player.getVolume();
 				}, 1000);
 				document.getElementById('diminuisci').onclick = function () {
 					player.setVolume(player.getVolume() - 10);
