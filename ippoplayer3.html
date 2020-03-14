@@ -59,15 +59,15 @@
 				});
 				event.target.playVideo();
 				
-				document.getElementById('volume').innerHTML = 'Volume';
+				setInterval(function() {
+					document.getElementById('volume').innerHTML = 'Volume<br>' + player.getVolume();
+				}, 1000);
 				document.getElementById('diminuisci').onclick = function () {
 					player.setVolume(player.getVolume() - 10);
-					document.getElementById('volume').innerHTML = 'Volume: ' + player.getVolume();
-				}
+				};
 				document.getElementById('aumenta').onclick = function () {
 					player.setVolume(player.getVolume() + 10);
-					document.getElementById('volume').innerHTML = 'Volume: ' + player.getVolume();
-				}
+				};
 			}
 
 			// 5. The API calls this function when the player's state changes.
