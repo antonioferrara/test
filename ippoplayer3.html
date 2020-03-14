@@ -58,6 +58,8 @@
 				    	'suggestedQuality': 'large'
 				});
 				event.target.playVideo();
+				
+				document.getElementById('volume').innerHTML = 'Volume: ' + event.target.getVolume();
 			}
 
 			// 5. The API calls this function when the player's state changes.
