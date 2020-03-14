@@ -30,6 +30,16 @@
 						'onStateChange': onPlayerStateChange
 					}
 				});
+				
+				document.getElementById('volume').innerHTML = 'Volume: ' + player.getVolume();
+				document.getElementById('diminuisci').onclick = function () {
+					player.setVolume(player.getVolume() - 10);
+					document.getElementById('volume').innerHTML = 'Volume: ' + player.getVolume();
+				}
+				document.getElementById('aumenta').onclick = function () {
+					player.setVolume(player.getVolume() + 10);
+					document.getElementById('volume').innerHTML = 'Volume: ' + player.getVolume();
+				}
 			}
 			
 			document.getElementById('diminuisci').style.top = document.documentElement.clientHeight - 100;
@@ -48,16 +58,6 @@
 			document.getElementById('volume').style.width = 0.33 * document.documentElement.clientWidth;
 			document.getElementById('aumenta').style.width = 0.33 * document.documentElement.clientWidth;
 			
-			document.getElementById('volume').innerHTML = 'Volume: ' + player.getVolume();
-			document.getElementById('diminuisci').onclick = function () {
-				player.setVolume(player.getVolume() - 10);
-				document.getElementById('volume').innerHTML = 'Volume: ' + player.getVolume();
-			}
-			document.getElementById('aumenta').onclick = function () {
-				player.setVolume(player.getVolume() + 10);
-				document.getElementById('volume').innerHTML = 'Volume: ' + player.getVolume();
-			}
-
 			// 4. The API will call this function when the video player is ready.
 			function onPlayerReady(event) {
 				event.target.loadPlaylist({
