@@ -1,17 +1,17 @@
 [
   {
-    "id-filiale": "1",
-    "nome-filiale": "Modena_Sede",
-    "indirizzo-filiale": "via San Carlo"
+    "id": "1",
+    "nome": "Modena_Sede",
+    "indirizzo": "via San Carlo"
   },
   {
-    "id-filiale": "2",
-    "nome-filiale": "Modena_16",
-    "indirizzo-filiale": "via Aristotele"
+    "id": "2",
+    "nome": "Modena_16",
+    "indirizzo": "via Aristotele"
   },
   {
-    "id-filiale": "3",
-    "nome-filiale": "Modena_32",
-    "indirizzo-filiale": "via Emilia"
+    "id": "3",
+    "nome": "Modena_32",
+    "indirizzo": "via Emilia"
   }
  ]
