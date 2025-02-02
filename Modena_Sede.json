@@ -1,5 +1,5 @@
 [{
-    "id-filiale": "1",
-    "nome-filiale": "Modena_Sede",
-    "indirizzo-filiale": "via San Carlo"
+    "id": "1",
+    "nome": "Modena_Sede",
+    "indirizzo": "via San Carlo"
   }]
