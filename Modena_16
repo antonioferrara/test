@@ -1,5 +1,7 @@
-[{
-    "id": "16",
-    "nome": "Modena_16",
-    "indirizzo": "via Aristotele"
-  }]
+
+{
+    "id-filiale": "2",
+    "nome-filiale": "Modena 16",
+    "indirizzo-filiale": "via Aristotele"
+}
+
