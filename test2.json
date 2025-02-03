@@ -1,5 +1,20 @@
 {
-    "id-filiale": "1",
-    "nome-filiale": "Modena Sede",
-    "indirizzo-filiale": "via San Carlo"
+    "input" : 'Modena_Sede',    
+    "lista": [
+      {
+        "id": "1",
+        "nome": "Modena_Sede",
+        "indirizzo": "via San Carlo"
+      },
+      {
+        "id": "2",
+        "nome": "Modena_16",
+        "indirizzo": "via Aristotele"
+      },
+      {
+        "id": "3",
+        "nome": "Modena_32",
+        "indirizzo": "via Emilia"
+      }
+     ]
 }
