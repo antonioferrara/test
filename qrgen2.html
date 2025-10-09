@@ -1,0 +1,108 @@
+<html>
+	<head>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js'></script>
+		<script src="qrcode.min.js"></script>
+		<style>
+			body {
+				font-family: sans-serif;
+			}
+			input, select {
+				width: 200px;
+			}
+		</style>
+	</head>
+	<body>
+		<aside style="float:left; margin: 20px">
+			<h2>Parametri</h2>
+			<p><span>Landing</span><br/><input id="input_landing" type="text"></input></p>
+			<p><span>Sorgente</span><br/><input id="input_source" type="text" value="qrcode" disabled></input></p>
+			<p><span>Mezzo<span><br/><select id="input_mezzo_pre" onchange="getMedium(this)">
+				<option>multi</option>
+				<option>filiale</option>
+				<option>evento</option>
+				<option>altro da naming reference</option>
+			</select><br/><input id="input_mezzo" type="text" value="multi">
+			</input></p>
+			<p><span>Campagna</span><br/><input id="input_campagna" type="text" value="generic">
+			</input></p>
+			<p><span>Contenuto</span><br/><select id="input_contenuto_pre" onchange="getContent(this)">
+				<option value="">nessuno</option>
+				<optgroup label="filiale o evento">
+					<option>cartolina</option>
+					<option>lettera</option>
+					<option>brochure</option>
+					<option>espositore</option>
+					<option>manifesto</option>
+					<option>vetrofania</option>
+          <option>monitor</option>
+					<option>atm</option>
+					<option>csa</option>
+				</optgroup>
+				<option>altro da naming reference</option>
+			</select><br/><input id="input_contenuto" type="text" value="">
+			</input></p>
+			<p><span>Termine</span><br/><input type="month" id="input_termine_pre" onchange="getTerm(this)">
+			</input><br/><input type="text" id="input_termine">
+			</input></p>
+			<!--p><span>Colore<span><br/><input type="color" id="input_color" value="#000000"></p-->
+			<p><input type="button" onclick="go()" value="Genera"></input></p>
+		</aside>
+		<article style="float:left; margin: 20px">
+			<h2>1. Redirect da inserire</h2>
+			<p>Verificare che non sia già presente</p>
+			<p id="redirect-1"></p>
+			<h2>2. QR Code da fornire</h2>
+			<canvas id='qrcode-1'>
+			</canvas>
+			<div id="qrcode-2">
+			</div>
+			
+			<p id="redirect-2"></p>
+			<h2>3. Log da salvare</h2>
+			<p id="redirect-3"></p>
+		</article>
+		<script type='text/javascript'>
+			function getMedium (x) {
+				document.getElementById('input_mezzo').value = x.value;
+			}
+			function getContent (x) {
+				document.getElementById('input_contenuto').value = x.value;
+			}
+			function getTerm (x) {
+				document.getElementById('input_termine').value = ['gen', 'feb', 'mar', 'apr', 'mag', 'giu', 'lug', 'ago', 'set', 'ott', 'nov', 'dic'][x.value.substring(5)-1] + '' + x.value.substring(2,4);
+			}
+			document.getElementById('input_termine_pre').value = new Date().getFullYear() + '-' + ('0' + (new Date().getMonth()+1)).slice(-2);
+			getTerm(document.getElementById('input_termine_pre'));
+		
+			function go () {
+				var in_landing = new URL(document.getElementById('input_landing').value);
+				var in_medium = document.getElementById('input_mezzo').value;
+				var in_campaign = document.getElementById('input_campagna').value;
+				var in_content = document.getElementById('input_contenuto').value;
+				var in_term = document.getElementById('input_termine').value;
+			
+				var valoreqr = 'qr/' + document.getElementById('input_landing').value.substring(document.getElementById('input_landing').value.lastIndexOf('/')+1) + (in_medium != 'multi' ? '/' + in_medium : '') + (in_campaign != 'generic' ? '/' + in_campaign : '') + (in_content != '' ? '/' + in_content : '') + '/' + in_term;
+				var redirect = in_landing + '?utm_source=qrcode&utm_medium=' + in_medium + '&utm_campaign=' + in_campaign + '&utm_content=' + in_content + '&utm_term=' + in_term;
+				
+				document.getElementById('redirect-1').innerHTML = '<input style="width: 400px" type="button" onclick="navigator.clipboard.writeText(this.value)" value="' + valoreqr +'"></input><br/><input style="width: 400px" type="button" onclick="navigator.clipboard.writeText(this.value)" value="' + redirect +'"></input>';
+				var qrcode = new QRious({element:document.getElementById('qrcode-1'),background: '#ffffff',backgroundAlpha:0,foreground:'#000000',foregroundAlpha:1,level:'M',padding:0,size:300, mime: 'image/svg+xml', value: 'https://' + in_landing.hostname + '/' + valoreqr});
+				
+				document.getElementById('redirect-2').innerHTML = 'https://' + in_landing.hostname + '/' + valoreqr;
+				
+				document.getElementById('redirect-3').innerHTML = 'https://' + in_landing.hostname + '/' + valoreqr + ';' + in_landing + ';qrcode;' + in_medium + ';' + in_campaign + ';' + in_content  + ';' + in_term;
+			
+				var qrcode2 = QRCode({
+					msg :  'https://' + in_landing.hostname + '/' + valoreqr
+					,dim :   300
+					,pad :   0
+					,ecl :  "M"
+					,pal : ["#000000", "#111111"]
+				});
+				
+				document.getElementById('qrcode-1').appendChild(qrcode2);
+			}
+			
+			go();
+		</script>
+	</body>
+</html>
