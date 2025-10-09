@@ -1,7 +1,6 @@
 <html>
 	<head>
 		<script src='https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js'></script>
-		<script src="qrcode.min.js"></script>
 		<style>
 			body {
 				font-family: sans-serif;
@@ -33,8 +32,8 @@
 					<option>brochure</option>
 					<option>espositore</option>
 					<option>manifesto</option>
+					<option>monitor</option>
 					<option>vetrofania</option>
-          <option>monitor</option>
 					<option>atm</option>
 					<option>csa</option>
 				</optgroup>
@@ -54,9 +53,6 @@
 			<h2>2. QR Code da fornire</h2>
 			<canvas id='qrcode-1'>
 			</canvas>
-			<div id="qrcode-2">
-			</div>
-			
 			<p id="redirect-2"></p>
 			<h2>3. Log da salvare</h2>
 			<p id="redirect-3"></p>
@@ -90,19 +86,7 @@
 				document.getElementById('redirect-2').innerHTML = 'https://' + in_landing.hostname + '/' + valoreqr;
 				
 				document.getElementById('redirect-3').innerHTML = 'https://' + in_landing.hostname + '/' + valoreqr + ';' + in_landing + ';qrcode;' + in_medium + ';' + in_campaign + ';' + in_content  + ';' + in_term;
-			
-				var qrcode2 = QRCode({
-					msg :  'https://' + in_landing.hostname + '/' + valoreqr
-					,dim :   300
-					,pad :   0
-					,ecl :  "M"
-					,pal : ["#000000", "#111111"]
-				});
-				
-				document.getElementById('qrcode-1').appendChild(qrcode2);
 			}
-			
-			go();
 		</script>
 	</body>
 </html>
